@@ -3,8 +3,8 @@ const dotenv = require("dotenv")
 
 dotenv.config()
 const app = express()
-
 app.use(express.json())
+
 const categoryRoutes = require("../src/Category/category.routes")
 const productRoutes = require("../src/Product/product.routes")
 const PORT = process.env.PORT

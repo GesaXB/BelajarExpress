@@ -1,8 +1,27 @@
 const prisma = require("../db")
 
+const getAll = async () => {
+  return await prisma.category.findMany({
+    include: {
+      product_id: {
+        select: {
+          id: true,
+          name: true
+        }
+      }
+    }
+  })
+}
+
 const findById = async (id) => {
   return await prisma.category.findUnique({
     where: { id }
+  })
+}
+
+const create = async (data) => {
+  return await prisma.category.create({
+    data
   })
 }
 
@@ -20,7 +39,9 @@ const deleteByID = async (id) => {
 }
 
 module.exports = {
+  getAll,
   findById,
+  create,
   update,
   deleteByID,
 }

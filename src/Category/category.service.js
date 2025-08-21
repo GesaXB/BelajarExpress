@@ -1,8 +1,8 @@
 const prisma = require("../db/index")
-const { findById, update, deleteByID } = require("./category.repository")
+const { findById, update, deleteByID, getAll, create } = require("./category.repository")
 
 const getAllCategories = async () => {
-  return await prisma.category.findMany()
+  return await getAll()
 }
 
 const createCategories = async (categoryData) => {
@@ -12,9 +12,7 @@ const createCategories = async (categoryData) => {
     throw new Error("error, data tidak di isi penuh")
   }
 
-  return await prisma.category.create({
-    data: { name, description }
-  })
+  return await create(categoryData)
 }
 
 const updateCategory = async (categoryId, categoryData) => {

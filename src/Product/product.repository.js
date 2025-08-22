@@ -6,7 +6,7 @@ const getProducts = async () => {
 
 const insertProduct = async (data) => {
   return prisma.product.create({
-    data,
+    data
   })
 }
 
